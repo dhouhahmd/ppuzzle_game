@@ -1,0 +1,158 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> Mots Croisés </title>
+<style>
+  
+  table {
+    border-collapse: collapse;
+    margin: 20px auto;
+  }
+  td {
+    width: 40px;
+    height: 40px;border: 1px solid black;
+    text-align: center;
+    font-size: 18px;
+    font-family: Arial, sans-serif;
+  }
+</style>
+</head>
+<body>
+
+<table id="crossword">
+
+  <tr>
+    <td bgcolor="grey">b</td>
+    <td bgcolor="grey">c</td>
+<td bgcolor="grey">a</td>
+    <td bgcolor="grey">r</td>
+    <td bgcolor="grey">m</td>
+    <td bgcolor="grey">p</td>
+    <td bgcolor="grey">o</td>
+    <td bgcolor="grey">u</td>
+<td bgcolor="grey">p</td>
+<td bgcolor="grey">p</td>
+<td bgcolor="grey">é</td>
+<td bgcolor="grey">e</td>
+
+
+  </tr>
+  <tr>
+    <td bgcolor="grey">o</td>
+    <td bgcolor="grey">r</td>
+    <td bgcolor="grey">d</td>
+    <td bgcolor="grey">i</td>
+    <td bgcolor="grey">n</td>
+<td bgcolor="grey">a</td>
+    <td bgcolor="grey">t</td>
+    <td bgcolor="grey">e</td>
+<td bgcolor="grey">u</td>
+<td bgcolor="grey">r</td>
+<td bgcolor="grey">u</td>
+<td bgcolor="grey">p</td>
+  </tr>
+  <tr>
+    <td bgcolor="grey">a</td>
+    <td bgcolor="grey">m</td>
+    <td bgcolor="grey">a</td>
+    <td bgcolor="grey">c</td>
+    <td bgcolor="grey">h</td>
+    <td bgcolor="grey">i</td>
+    <td bgcolor="grey">n</td>
+    <td bgcolor="grey">e</td>
+<td bgcolor="grey">a</td>
+<td bgcolor="grey">b</td>
+<td bgcolor="grey">c</td>
+<td bgcolor="grey">d</td>
+
+  </tr>
+  <tr>
+    <td bgcolor="grey">r</td>
+    <td bgcolor="grey">r</td>
+    <td bgcolor="grey">a</td>
+    <td bgcolor="grey">s</td>
+    <td bgcolor="grey">s</td>
+   <td bgcolor="grey">o</td>
+    <td bgcolor="grey">u</td>
+<td bgcolor="grey" >r</td>
+<td bgcolor="grey">i</td>
+<td bgcolor="grey">s</td>
+<td bgcolor="grey">p</td>
+<td bgcolor="grey">p</td>
+
+  </tr>
+  <tr>
+    <td bgcolor="grey">c</td>
+    <td bgcolor="grey">r</td>
+    <td bgcolor="grey">r</td>
+    <td bgcolor="grey">z</td>
+    <td bgcolor="grey">l</td>
+    <td bgcolor="grey">o</td>
+    <td bgcolor="grey">n</td>
+    <td bgcolor="grey">d</td>
+<td bgcolor="grey">o</td>
+<td bgcolor="grey">n</td>
+<td bgcolor="grey">p</td>
+<td bgcolor="grey">p</td>
+
+  </tr>
+</table>
+
+<h1>Jeu de Mots Croisés</h1>
+
+<p>Entrez 7 mots à croiser(gardez l'ordre de mots dans le tableau)  :</p>
+
+<form>
+  <label for="mot1">mot1 :</label><br>
+<input type="text" id="mot1" name="mot1"><br>
+  
+  <label for="mot2">mot2 :</label><br>
+  <input type="text" id="mot2" name="mot2"><br>
+  
+  <label for="mot3">mot3 :</label><br>
+  <input type="text" id="mot3" name="mot3"><br>
+  <label for="mot4">mot4 :</label><br>
+  <input type="text" id="mot4" name="mot4"><br>
+  
+  <label for="mot5">mot5 :</label><br>
+  <input type="text" id="mot5" name="mot5"><br>
+<label for="mot6">mot6 :</label><br>
+  <input type="text" id="mot6" name="mot6"><br>
+  
+  <label for="mot7">mot7 :</label><br>
+  <input type="text" id="mot7" name="mot7"><br><br>
+  
+  <button type="button" onclick="verifierMots()">Vérifier</button>
+</form>
+
+<div id="resultat"></div>
+<script>
+function verifierMots(){
+
+var motsCorrects = ["car", "pouppée", "ordinateur", "machine", "arc", "souris", "london"]; 
+    var labels = document.querySelectorAll('label');
+    var resultatDiv = document.getElementById("resultat");
+
+    var motsIncorrects = 0;
+    for (var i = 0; i < motsCorrects.length; i++) {
+        var motSaisi = document.getElementById("mot" + (i+1)).value.toLowerCase();
+        if (motSaisi.trim() !== motsCorrects[i]) {
+            labels[i].style.color = "red"; 
+            motsIncorrects++;
+        } else {
+            labels[i].style.color = "green"; 
+        }
+    }
+if (motsIncorrects === 0) {
+        resultatDiv.innerHTML = "Tous les mots sont corrects !";
+    } else {
+        resultatDiv.innerHTML = "Il y a " + motsIncorrects + " mot(s) incorrect(s).";
+    }
+}
+</script>
+</body>
+</html>
