@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Mots Croisés</title>
+</head>
+<body>
+  <h1>Test Mots Croisés</h1>
+  <form id="testForm">
+    <label for="mot1">mot1 :</label><br>
+    <input type="text" id="mot1" name="mot1" ><br>
+  
+    <label for="mot2">mot2 :</label><br>
+    <input type="text" id="mot2" name="mot2" ><br>
+  
+    <label for="mot3">mot3 :</label><br>
+    <input type="text" id="mot3" name="mot3" ><br>
+  
+    <label for="mot4">mot4 :</label><br>
+    <input type="text" id="mot4" name="mot4" ><br>
+  
+    <label for="mot5">mot5 :</label><br>
+    <input type="text" id="mot5" name="mot5" ><br>
+  
+    <label for="mot6">mot6 :</label><br>
+    <input type="text" id="mot6" name="mot6" ><br>
+  
+    <label for="mot7">mot7 :</label><br>
+    <input type="text" id="mot7" name="mot7" ><br><br>
+  
+    <button type="button" onclick="simulateVerification()">Simuler Vérification</button>
+  </form>
+
+  <div id="testResult"></div>
+
+  <script>
+    function simulateVerification() {
+      var motsCorrects = ["car", "pouppée", "ordinateur", "machine", "arc", "souris", "london"];
+      var formulaire = document.getElementById("testForm");
+      var resultatDiv = document.getElementById("testResult");
+      var motsIncorrects = 0;
+
+      for (var i = 0; i < motsCorrects.length; i++) {
+        var motSaisi = formulaire.elements["mot" + (i+1)].value.toLowerCase();
+        if (motSaisi.trim() !== motsCorrects[i]) {
+          motsIncorrects++;
+        }
+      }
+
+      if (motsIncorrects === 0) {
+        resultatDiv.innerHTML = "Tous les mots sont corrects !";
+      } else {
+        resultatDiv.innerHTML = "Il y a " + motsIncorrects + " mot(s) incorrect(s).";
+      }
+    }
+  </script>
+</body>
+</html>
